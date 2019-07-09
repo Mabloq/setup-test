@@ -1,8 +1,8 @@
 import configparser
 import os
 from pyspark.sql import SparkSession
-from schemas import songSchema, logSchema
-from udfs import year_part_udf
+from utils.schemas import songSchema, logSchema
+from utils.udfs import year_part_udf
 from pyspark.sql.functions import col, monotonically_increasing_id
 from pyspark.sql.functions import year, month, dayofmonth, hour, weekofyear,dayofweek, from_unixtime
 
@@ -10,8 +10,8 @@ from pyspark.sql.functions import year, month, dayofmonth, hour, weekofyear,dayo
 config = configparser.ConfigParser()
 config.read('dl.cfg')
 
-os.environ['AWS_ACCESS_KEY_ID'] = config['AWS_ACCESS_KEY_ID']
-os.environ['AWS_SECRET_ACCESS_KEY'] = config['AWS_SECRET_ACCESS_KEY']
+os.environ['AWS_ACCESS_KEY_ID'] = config['AWS']['AWS_ACCESS_KEY_ID']
+os.environ['AWS_SECRET_ACCESS_KEY'] = config['AWS']['AWS_SECRET_ACCESS_KEY']
 
 
 def create_spark_session():
@@ -21,14 +21,15 @@ def create_spark_session():
         Returns:
         object: spark session
     """
-    spark = SparkSession \
+    sc = SparkSession \
         .builder \
         .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:2.7.0") \
         .getOrCreate()
-    return spark
+
+    return sc
 
 
-def process_song_data(spark, input_data):
+def process_song_data(sc, input_data):
     """
       Reads song data from s3 saves raw data to staging table in parquet format and saves process data to
       songs and artists tables
@@ -39,37 +40,37 @@ def process_song_data(spark, input_data):
 
       """
     # read song data file
-    df = spark.read.json(input_data,schema=songSchema)
-
+    songs = sc.read.json(input_data,schema=songSchema)
 
     y = col("year")
     fname = [(year_part_udf, "year_part")]
     exprs = [col("*")] + [f(y).alias(name) for f, name in fname]
 
-
-    # extract columns to create staging_songs table
-    staging_songs_table = df.select(*exprs)
-
-    # write songs table to parquet files partitioned by year and artist
-    staging_songs_table.write.partitionBy('year_part', 'year', 'artist_id').format('parquet').mode(
-        'overwrite').save('local-data/parquet/staging_songs/')
+    # extract columns and write to parquet staging_songs table
+    staging_song_table = songs.select(*exprs)
+    staging_song_table.write\
+        .partitionBy('year_part','year', 'artist_id')\
+        .format('parquet')\
+        .mode('overwrite')\
+        .save('local-data/parquet/staging_songs/')
 
     # extract columns to create songs table
-    songs_table = df.select("song_id", "title", 'artist_id', 'year', 'duration')
-    #write songs to parquet songs_table
-    songs_table.write.partitionBy('year_part', 'year', 'artist_id').format('parquet').mode(
-        'overwrite').save('local-data/parquet/songs/')
+    # write songs to parquet songs_tablex
+    song_table = songs.select(*exprs)
+    song_table.write.mode('overwrite')\
+        .partitionBy('year_part', 'year', 'artist_id')\
+        .format('parquet').mode('overwrite')\
+        .save('local-data/parquet/songs/')
 
     # extract columns to create artists table
-    artists_table = df.selectExpr('artist_id', 'artist_name as name', 'artist_location as location', 'artist_latitude as latitude', \
-                           'artist_longitude as longitude')
+    artists_table = songs.selectExpr('artist_id', 'artist_name as name', 'artist_location as location', 'artist_latitude as latitude','artist_longitude as longitude')
 
     artists_table.dropDuplicates(['artist_id']).count()
     # write artists table to parquet files
     artists_table.write.mode('overwrite').parquet("local-data/parquet/artists/")
 
 
-def process_log_data(spark, input_data, output_data):
+def process_log_data(spark, input_data):
     """
       Reads event data from s3 saves raw data to staging table in parquet format and saves process data to
       users, time and songplays tables
@@ -83,7 +84,6 @@ def process_log_data(spark, input_data, output_data):
     # read log data file
     df = spark.read.json(input_data, schema=logSchema)
 
-    #write to staging_events
     df.write.mode('overwrite').parquet("local-data/parquet/staging_events/")
     # filter by actions for song plays
     df = df.select("*").where(df.page == 'NextSong')
@@ -105,18 +105,16 @@ def process_log_data(spark, input_data, output_data):
     time_table = time_table.withColumn('year', year('start_time'))
     time_table = time_table.withColumn('weekday', dayofweek('start_time'))
 
-
     # write time table to parquet files partitioned by year and month
     time_table.write.mode('overwrite').partitionBy('year', 'month').parquet('local-data/parquet/time/')
 
     # read in song data to use for songplays table
-    songs_df = spark.read.parquet('/staging_songs/')
+    songs_df = spark.read.parquet('local-data/parquet/staging_songs/')
     # read in event data to use for songplays table
     events_df = spark.read.parquet('local-data/parquet/staging_events/')
 
     # extract columns from joined song and log datasets to create songplays table
-    songplays = events_df.join(songs_df, (events_df.artist == songs_df.artist_name) & (events_df.song == songs_df.title) & (
-                events_df.length == songs_df.duration))
+    songplays = events_df.join(songs_df, (events_df.artist == songs_df.artist_name) & (events_df.song == songs_df.title))
 
     # Add monotonicall increasingId
     songplays = songplays.withColumn("songplay_id", monotonically_increasing_id())
@@ -132,11 +130,13 @@ def process_log_data(spark, input_data, output_data):
 
     songplays.select(*exprs) \
         .write \
+        .mode('overwrite') \
         .partitionBy(*(name for _, name in fname)) \
-        .parquet('s3a://local-data/parquet/songplays/')
+        .parquet('local-data/parquet/songplays/')
 
 
 if __name__ == "__main__":
     spark = create_spark_session()
-    process_song_data(spark, 'local-data/songs/*.json')
+    process_song_data(spark, 'local-data/songs/*/*.json')
     process_log_data(spark, 'local-data/logs/*.json')
+    spark.stop()
