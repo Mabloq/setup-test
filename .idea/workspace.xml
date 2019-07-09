@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e77aa3bc-2334-493a-a081-4bea592c6d1c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/analytics_queries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/queries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/querybuilder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dl.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/dl.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etl.py" beforeDir="false" afterPath="$PROJECT_DIR$/etl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAAK128F9318786.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAAV128F421A322.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAABD128F429CF47.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAACN128F9355673.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAEA128F935A30D.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAED128E0783FAB.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAEM128F93347B9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAEW128F42930C0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAFD128F92F423A.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAGR128F425B14B.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAHD128F42635A5.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAHJ128F931194C.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAHZ128E0799171.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAIR128F1480971.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAJN128F428E437.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAND12903CD1F1B.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAANK128F428B515.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAOF128F429C156.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAPK128E0786D96.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAQN128F9353BA0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAQO12903CD8E1C.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAUC128F428716F.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAUR128F428B1FA.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-data/songs/TRAAAYL128F4271A5B.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/schemas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udfs.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/udfs.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,11 +50,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dl.cfg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dl.cfg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dl.cfg">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
               <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-180">
+                <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="udfs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/udfs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+              <folding>
+                <element signature="e#26#73#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,13 +135,13 @@
         <option value="$PROJECT_DIR$/schemas.py" />
         <option value="$PROJECT_DIR$/queries.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/etl.py" />
         <option value="$PROJECT_DIR$/analytics_queries.py" />
         <option value="$PROJECT_DIR$/utils/querybuilder.py" />
         <option value="$PROJECT_DIR$/dl.cfg" />
         <option value="$PROJECT_DIR$/utils/queries.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -179,6 +169,11 @@
               <item name="setup_test" type="b2602c69:ProjectViewProjectNode" />
               <item name="setup_test" type="462c0819:PsiDirectoryNode" />
               <item name="local-data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="setup_test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="setup_test" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -227,14 +222,14 @@
     <frame x="164" y="22" width="1515" height="956" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966533" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24966533" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32945284" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32945284" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -283,16 +278,6 @@
     <entry file="file://$USER_HOME$/anaconda3/envs/setup_test/lib/python3.6/site-packages/wheel-0.33.4-py3.6.egg-info/requires.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/udfs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#26#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -304,16 +289,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="180">
-            <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -452,16 +427,6 @@
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/querybuilder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -476,6 +441,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/udfs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding>
+            <element signature="e#26#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-180">
+            <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
